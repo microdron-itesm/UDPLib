@@ -12,10 +12,13 @@ typedef struct udp_conn_data_s {
     int sock;
     struct sockaddr_in sendAddr, recvAddr;
     bool enableRecv, enableSend;
+    bool hasSendIP;
     socklen_t fromLen;
 } udp_conn_data;
 
-int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recevPort);
+int udp_conn_open_ip(udp_conn_data *data, char * ipAddr, uint16_t sendPort, uint16_t recvPort);
+
+int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recvPort);
 
 ssize_t udp_conn_send(udp_conn_data *data, uint8_t *buf, size_t len);
 
