@@ -4,7 +4,9 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <libnet.h>
+#include <errno.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include "UDP.h"
 
 int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recevPort){
@@ -17,7 +19,7 @@ int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recevPort){
     data->sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP);
     if(data->sock < 0){
         perror("Socket open failed");
-        exit(EXIT_FAILURE);
+        return(errno);
     }
 
     int ret = 0;
