@@ -53,6 +53,16 @@ int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recvPort){
         return(-errno);
     }
 
+    struct timeval read_timeout;
+    read_timeout.tv_sec = 0;
+    read_timeout.tv_usec = 10;
+    ret = setsockopt(data->sock, SOL_SOCKET, SO_RCVTIMEO, &read_timeout, sizeof(read_timeout));
+    if(ret < 0){
+        perror("Nonblocking recv failed");
+        close(data->sock);
+        return(-errno);
+    }
+
     return(0);
 }
 
