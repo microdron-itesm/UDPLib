@@ -16,7 +16,7 @@ typedef struct udp_conn_data_s {
     socklen_t fromLen;
 } udp_conn_data;
 
-int udp_conn_open_ip(udp_conn_data *data, char * ipAddr, uint16_t sendPort, uint16_t recvPort);
+int udp_conn_open_ip(udp_conn_data *data, const char * ipAddr, uint16_t sendPort, uint16_t recvPort);
 
 int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recvPort);
 
