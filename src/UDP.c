@@ -9,6 +9,7 @@
 #include <fcntl.h>
 #include <netdb.h>
 #include <malloc.h>
+#include <bits/types/struct_timeval.h>
 #include "UDP.h"
 
 int udp_conn_open(udp_conn_data *data, uint16_t sendPort, uint16_t recvPort){
